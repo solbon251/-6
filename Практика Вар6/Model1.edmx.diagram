@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b069827b0f274445914ae303cadfe992" Name="Diagram1">
+        <EntityTypeShape EntityType="lolModel.Author" Width="1.5" PointX="7.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="lolModel.AuthorsPublications" Width="1.5" PointX="9.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="lolModel.Client" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="lolModel.Order" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="lolModel.Publication" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="lolModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="lolModel.TypeClient" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="lolModel.TypeProduction" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="lolModel.Typography" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="lolModel.User" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="lolModel.FK_AuthorsPublications_Author" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.FK_AuthorsPublications_Publication" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.FK_Client_TypeClient" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.FK_Order_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.FK_Order_TypeProduction" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.FK_Order_Typography" ManuallyRouted="false" />
+        <AssociationConnector Association="lolModel.FK_Publication_Order" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
