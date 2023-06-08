@@ -16,16 +16,13 @@ using System.Windows.Shapes;
 namespace Практика_Вар6
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для Page1.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Page1 : Page
     {
-        lolEntities context;
-        public MainWindow()
+        public Page1()
         {
             InitializeComponent();
-            context = new lolEntities();
-            myFrame.Navigate(new pages.avtoriz(context));
         }
     }
 }
