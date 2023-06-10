@@ -87,6 +87,9 @@
     <Compile Include="pages\avtoriz.xaml.cs">
       <DependentUpon>avtoriz.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\REGISTR.xaml.cs">
+      <DependentUpon>REGISTR.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Publication.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -122,6 +125,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pages\avtoriz.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\REGISTR.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

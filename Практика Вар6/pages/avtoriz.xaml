@@ -35,6 +35,6 @@
             <PasswordBox Name="PasswordBox"/>
         </StackPanel>
         <Button Grid.Column="1" Grid.Row="4"  HorizontalAlignment="Right" Margin="0, 20, 30, 10" Width="120" Click="VhodClick" Name="buttonVhod">Вход</Button>
-        <Button Grid.Column="1" Grid.Row="4"  HorizontalAlignment="Left" Margin="20, 20, 0, 10" Width="160">Авторизоваться</Button>
+        <Button Grid.Column="1" Grid.Row="4"  HorizontalAlignment="Left" Margin="20, 20, 0, 10" Width="160" Click="RegistrClick">Авторизоваться</Button>
     </Grid>
 </Page>

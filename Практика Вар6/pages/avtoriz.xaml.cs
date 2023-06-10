@@ -54,7 +54,7 @@ namespace Практика_Вар6.pages
                 else
                 {
                     MessageBox.Show("Вы ввели неверный пароль");
-                    if (countClick >= 3)
+                    if (countClick >= 5)
                     {
                         buttonVhod.IsEnabled = false;
                         timer.Start();
@@ -64,12 +64,18 @@ namespace Практика_Вар6.pages
             else
             {
                 MessageBox.Show("Такого пользователься не сущеструет");
-                if (countClick >= 3)
+                if (countClick >= 5)
                 {
                     buttonVhod.IsEnabled = false;
                     timer.Start();
                 }
             }
+        }
+
+        private void RegistrClick(object sender, RoutedEventArgs e)
+        {
+            REGISTR regWindow = new REGISTR(context);
+            regWindow.Show();
         }
     }
 }
