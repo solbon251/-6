@@ -19,8 +19,8 @@ namespace Практика_Вар6.pages
     /// </summary>
     public partial class REGISTR : Window
     {
-        lolEntities context;
-        public REGISTR(lolEntities cont)
+        PraktikV6Entities context;
+        public REGISTR(PraktikV6Entities cont)
         {
             InitializeComponent();
             context = cont;
@@ -28,15 +28,15 @@ namespace Практика_Вар6.pages
 
         private void addClick(object sender, RoutedEventArgs e)
         {
-            User user = new User()
+            Users user = new Users()
             {
                 email = emailBox.Text,
-                Password = passBox.Text,
-                age = Convert.ToInt32(ageBox.Text),
-                DateOfregistration = DateTime.Now,
-                DateOfLastLog = DateTime.Now
+                password = passBox.Text,
+                serverNum = Convert.ToInt32(serverNumBox.Text),
+                FIO = FIOBox.Text,
+                post = postBox.Text
             };
-            context.User.Add(user);
+            context.Users.Add(user);
             context.SaveChanges();
             this.Close();
         }

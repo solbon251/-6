@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище lolModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище PraktikV6Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Author">
           <Key>
             <PropertyRef Name="idAuthor" />
@@ -54,6 +54,7 @@
           <Property Name="Volume" Type="int" Nullable="false" />
           <Property Name="Edition" Type="int" Nullable="false" />
           <Property Name="IdOrder" Type="int" Nullable="false" />
+          <Property Name="Photo" Type="image" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -88,21 +89,15 @@
           <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Adres" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "lol.dbo.User" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
-        <EntityType Name="User">
+        <EntityType Name="Users">
           <Key>
             <PropertyRef Name="email" />
-            <PropertyRef Name="DateOfregistration" />
-            <PropertyRef Name="DateOfLastLog" />
-            <PropertyRef Name="Password" />
-            <PropertyRef Name="age" />
           </Key>
-          <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="DateOfregistration" Type="date" Nullable="false" />
-          <Property Name="DateOfLastLog" Type="date" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="age" Type="int" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="post" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="serverNum" Type="int" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_AuthorsPublications_Author">
           <End Role="Author" Type="Self.Author" Multiplicity="1" />
@@ -188,7 +183,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище lolModelContainer">
+        <EntityContainer Name="Хранилище PraktikV6ModelContainer">
           <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AuthorsPublications" EntityType="Self.AuthorsPublications" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
@@ -198,15 +193,7 @@
           <EntitySet Name="TypeClient" EntityType="Self.TypeClient" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeProduction" EntityType="Self.TypeProduction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Typography" EntityType="Self.Typography" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="User" EntityType="Self.User" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [User].[email] AS [email], 
-    [User].[DateOfregistration] AS [DateOfregistration], 
-    [User].[DateOfLastLog] AS [DateOfLastLog], 
-    [User].[Password] AS [Password], 
-    [User].[age] AS [age]
-    FROM [dbo].[User] AS [User]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_AuthorsPublications_Author" Association="Self.FK_AuthorsPublications_Author">
             <End Role="Author" EntitySet="Author" />
             <End Role="AuthorsPublications" EntitySet="AuthorsPublications" />
@@ -240,7 +227,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="lolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="PraktikV6Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Author">
           <Key>
             <PropertyRef Name="idAuthor" />
@@ -299,6 +286,7 @@
           <Property Name="Volume" Type="Int32" Nullable="false" />
           <Property Name="Edition" Type="Int32" Nullable="false" />
           <Property Name="IdOrder" Type="Int32" Nullable="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="AuthorsPublications" Relationship="Self.FK_AuthorsPublications_Publication" FromRole="Publication" ToRole="AuthorsPublications" />
           <NavigationProperty Name="Order" Relationship="Self.FK_Publication_Order" FromRole="Publication" ToRole="Order" />
         </EntityType>
@@ -338,19 +326,15 @@
           <Property Name="Adres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Order" Relationship="Self.FK_Order_Typography" FromRole="Typography" ToRole="Order" />
         </EntityType>
-        <EntityType Name="User">
+        <EntityType Name="Users">
           <Key>
             <PropertyRef Name="email" />
-            <PropertyRef Name="DateOfregistration" />
-            <PropertyRef Name="DateOfLastLog" />
-            <PropertyRef Name="Password" />
-            <PropertyRef Name="age" />
           </Key>
-          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DateOfregistration" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="DateOfLastLog" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="age" Type="Int32" Nullable="false" />
+          <Property Name="FIO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="post" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="serverNum" Type="Int32" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <Association Name="FK_AuthorsPublications_Author">
           <End Role="Author" Type="Self.Author" Multiplicity="1" />
@@ -436,7 +420,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="lolEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PraktikV6Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Author" EntityType="Self.Author" />
           <EntitySet Name="AuthorsPublications" EntityType="Self.AuthorsPublications" />
           <EntitySet Name="Client" EntityType="Self.Client" />
@@ -446,7 +430,7 @@
           <EntitySet Name="TypeClient" EntityType="Self.TypeClient" />
           <EntitySet Name="TypeProduction" EntityType="Self.TypeProduction" />
           <EntitySet Name="Typography" EntityType="Self.Typography" />
-          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
           <AssociationSet Name="FK_AuthorsPublications_Author" Association="Self.FK_AuthorsPublications_Author">
             <End Role="Author" EntitySet="Author" />
             <End Role="AuthorsPublications" EntitySet="AuthorsPublications" />
@@ -481,9 +465,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище lolModelContainer" CdmEntityContainer="lolEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PraktikV6ModelContainer" CdmEntityContainer="PraktikV6Entities">
           <EntitySetMapping Name="Author">
-            <EntityTypeMapping TypeName="lolModel.Author">
+            <EntityTypeMapping TypeName="PraktikV6Model.Author">
               <MappingFragment StoreEntitySet="Author">
                 <ScalarProperty Name="idAuthor" ColumnName="idAuthor" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -494,7 +478,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AuthorsPublications">
-            <EntityTypeMapping TypeName="lolModel.AuthorsPublications">
+            <EntityTypeMapping TypeName="PraktikV6Model.AuthorsPublications">
               <MappingFragment StoreEntitySet="AuthorsPublications">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="IdAuthor" ColumnName="IdAuthor" />
@@ -503,7 +487,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Client">
-            <EntityTypeMapping TypeName="lolModel.Client">
+            <EntityTypeMapping TypeName="PraktikV6Model.Client">
               <MappingFragment StoreEntitySet="Client">
                 <ScalarProperty Name="IdClient" ColumnName="IdClient" />
                 <ScalarProperty Name="idType" ColumnName="idType" />
@@ -514,7 +498,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Order">
-            <EntityTypeMapping TypeName="lolModel.Order">
+            <EntityTypeMapping TypeName="PraktikV6Model.Order">
               <MappingFragment StoreEntitySet="Order">
                 <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
                 <ScalarProperty Name="IdClient" ColumnName="IdClient" />
@@ -527,18 +511,19 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Publication">
-            <EntityTypeMapping TypeName="lolModel.Publication">
+            <EntityTypeMapping TypeName="PraktikV6Model.Publication">
               <MappingFragment StoreEntitySet="Publication">
                 <ScalarProperty Name="IdPublication" ColumnName="IdPublication" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Volume" ColumnName="Volume" />
                 <ScalarProperty Name="Edition" ColumnName="Edition" />
                 <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="lolModel.sysdiagrams">
+            <EntityTypeMapping TypeName="PraktikV6Model.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -549,7 +534,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TypeClient">
-            <EntityTypeMapping TypeName="lolModel.TypeClient">
+            <EntityTypeMapping TypeName="PraktikV6Model.TypeClient">
               <MappingFragment StoreEntitySet="TypeClient">
                 <ScalarProperty Name="IdType" ColumnName="IdType" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -557,7 +542,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TypeProduction">
-            <EntityTypeMapping TypeName="lolModel.TypeProduction">
+            <EntityTypeMapping TypeName="PraktikV6Model.TypeProduction">
               <MappingFragment StoreEntitySet="TypeProduction">
                 <ScalarProperty Name="IdType" ColumnName="IdType" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -565,7 +550,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Typography">
-            <EntityTypeMapping TypeName="lolModel.Typography">
+            <EntityTypeMapping TypeName="PraktikV6Model.Typography">
               <MappingFragment StoreEntitySet="Typography">
                 <ScalarProperty Name="IdTypography" ColumnName="IdTypography" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -574,14 +559,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="User">
-            <EntityTypeMapping TypeName="lolModel.User">
-              <MappingFragment StoreEntitySet="User">
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="PraktikV6Model.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="post" ColumnName="post" />
+                <ScalarProperty Name="serverNum" ColumnName="serverNum" />
                 <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="DateOfregistration" ColumnName="DateOfregistration" />
-                <ScalarProperty Name="DateOfLastLog" ColumnName="DateOfLastLog" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="password" ColumnName="password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

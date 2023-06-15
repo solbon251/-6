@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,12 +21,23 @@ namespace Практика_Вар6
     /// </summary>
     public partial class MainWindow : Window
     {
-        lolEntities context;
+        PraktikV6Entities context;
         public MainWindow()
         {
             InitializeComponent();
-            context = new lolEntities();
+            context = new PraktikV6Entities();
             myFrame.Navigate(new pages.avtoriz(context));
+        }
+        public void DownloadPictures()
+        {
+            using (PraktikV6Entities context = new PraktikV6Entities())
+            {
+                foreach (var item in context.Publication.ToList())
+                {
+                    item.Photo = File.ReadAllBytes($"C:/Games/Photo/{item.IdPublication}.jpg");
+                }
+                context.SaveChanges();
+            }
         }
     }
 }

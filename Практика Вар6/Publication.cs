@@ -25,6 +25,7 @@ namespace Практика_Вар6
         public int Volume { get; set; }
         public int Edition { get; set; }
         public int IdOrder { get; set; }
+        public byte[] Photo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AuthorsPublications> AuthorsPublications { get; set; }

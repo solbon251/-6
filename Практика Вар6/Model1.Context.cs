@@ -13,10 +13,10 @@ namespace Практика_Вар6
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class lolEntities : DbContext
+    public partial class PraktikV6Entities : DbContext
     {
-        public lolEntities()
-            : base("name=lolEntities")
+        public PraktikV6Entities()
+            : base("name=PraktikV6Entities")
         {
         }
     
@@ -34,6 +34,6 @@ namespace Практика_Вар6
         public virtual DbSet<TypeClient> TypeClient { get; set; }
         public virtual DbSet<TypeProduction> TypeProduction { get; set; }
         public virtual DbSet<Typography> Typography { get; set; }
-        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
     }
 }

@@ -12,12 +12,12 @@ namespace Практика_Вар6
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Users
     {
+        public string FIO { get; set; }
+        public string post { get; set; }
+        public int serverNum { get; set; }
         public string email { get; set; }
-        public System.DateTime DateOfregistration { get; set; }
-        public System.DateTime DateOfLastLog { get; set; }
-        public string Password { get; set; }
-        public int age { get; set; }
+        public string password { get; set; }
     }
 }

@@ -19,18 +19,25 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="40">Регистрация</TextBlock>
         
-        <TextBlock Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="25" Margin="5">Введите email</TextBlock>
-        <TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" Width="380" x:Name="emailBox"/>
+        <TextBlock Grid.Row="1"  VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="25" Margin="5">Введите ФИО</TextBlock>
+        <TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" Width="380" x:Name="FIOBox"/>
         
-        <TextBlock Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="25" Margin="5">Введите password</TextBlock>
-        <TextBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" Width="380" x:Name="passBox"/>
+        <TextBlock Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="25" Margin="5">Введите email</TextBlock>
+        <TextBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" Width="380" x:Name="emailBox"/>
+        
+        <TextBlock Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="25" Margin="5">Введите password</TextBlock>
+        <TextBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" Width="380" x:Name="passBox"/>
 
-        <TextBlock Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="25" Margin="5">Введите возраст</TextBlock>
-        <TextBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" Width="380" x:Name="ageBox"/>
+        <TextBlock Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="25" Margin="5">Введите должность</TextBlock>
+        <TextBox Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" Width="380" x:Name="postBox"/>
 
-        <Button Click="addClick"  Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4">Добавить</Button>
+        <TextBlock Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="25" Margin="5">Введите Табельный номер</TextBlock>
+        <TextBox Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" Width="380" x:Name="serverNumBox"/>
+
+        <Button Click="addClick"  Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="6" Margin="5">Добавить</Button>
     </Grid>
 </Window>

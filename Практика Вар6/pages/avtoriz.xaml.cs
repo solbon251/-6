@@ -21,15 +21,17 @@ namespace Практика_Вар6.pages
     /// </summary>
     public partial class avtoriz : Page
     {
-        lolEntities context;
+        PraktikV6Entities context;
         DispatcherTimer timer;
-        public avtoriz(lolEntities cont)
+        Window window;
+        public avtoriz(PraktikV6Entities cont, Window w)
         {
             InitializeComponent();
             context = cont;
             timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 30);
-            timer.Tick += Timer_Tick;    
+            timer.Tick += Timer_Tick;
+            window = w;
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
@@ -43,28 +45,28 @@ namespace Практика_Вар6.pages
             countClick++;
             string log = LoginBox.Text;
             string pass = PasswordBox.Password;
-            User user = context.User.Find(log);
+                Users user = context.Users.Find(log);
             if (user != null)
             {
-                if (user.Password.Equals(pass))
+                if (user.password.Equals(pass))
                 {
-                    MessageBox.Show("Вы усвешно авторизовались");
+                    
                     countClick = 0;
+                    NavigationService.Navigate(new mainMenuPagas(context, window));
                 }
                 else
                 {
                     MessageBox.Show("Вы ввели неверный пароль");
-                    if (countClick >= 5)
+                    if (countClick >= 3)
                     {
-                        buttonVhod.IsEnabled = false;
-                        timer.Start();
+                        Remem.Visibility = Visibility.Visible;
                     }
                 }
             }
             else
             {
                 MessageBox.Show("Такого пользователься не сущеструет");
-                if (countClick >= 5)
+                if (countClick >= 3)
                 {
                     buttonVhod.IsEnabled = false;
                     timer.Start();
@@ -76,6 +78,12 @@ namespace Практика_Вар6.pages
         {
             REGISTR regWindow = new REGISTR(context);
             regWindow.Show();
+        }
+
+        private void RememPassClick(object sender, RoutedEventArgs e)
+        {
+            Users us = context.Users.Find(LoginBox.Text);
+            NavigationService.Navigate(new rememPassPagas(us));
         }
     }
 }
