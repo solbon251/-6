@@ -29,19 +29,21 @@ namespace Практика_Вар6.pages
             _context = context;
         }
 
-        private void autorClick(object sender, RoutedEventArgs e)
+        private void userClick(object sender, RoutedEventArgs e)
         {
-            frameToBasePages.Navigate(new DishPage(_context));
+            frameToBasePages.Navigate(new userr(_context));
         }
 
         private void publicClick(object sender, RoutedEventArgs e)
         {
-            frameToBasePages.Navigate(new Pagas(_context));
+        //    frameToBasePages.Navigate(new Pagas(_context));
         }
 
         private void EscapeClick(object sender, RoutedEventArgs e)
-        {
-            Window.Close();
+        { 
+              Window.Close();
         }
+
+        
     }
 }

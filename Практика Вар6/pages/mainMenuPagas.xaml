@@ -9,29 +9,37 @@
       Title="mainMenuPagas">
 
     <Grid>
+        
         <Grid.ColumnDefinitions>
+            
             <ColumnDefinition Width="200" />
             <ColumnDefinition/>
+            
         </Grid.ColumnDefinitions>
 
         <Frame Name="frameToBasePages" Grid.Column="1"/>
         <Grid Background="#50c878">
             <Grid.RowDefinitions>
+                
                 <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="75"/>
                 <RowDefinition/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="2*"/>
                 <RowDefinition/>
                 <RowDefinition/>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="60"/>
+                
             </Grid.RowDefinitions>
 
             <Image Source="/idl/logo.png" Height="100" Grid.RowSpan="2"/>
 
-
-            <Button Grid.Row="2" Click="autorClick">Авторы</Button>
-            <Button Grid.Row="3" Click="publicClick">Продукции</Button>
-            <Button Grid.Row="6" Click="EscapeClick">Выход</Button>
+            <Button Margin="20, 10" Grid.Row="2" Click="userClick">Пользователи</Button>
+            
+            <Button Margin="20, 10" Grid.Row="3" Click="publicClick">Продукции</Button>
+            
+            <Button Margin="20, 5" Grid.Row="7" Click="EscapeClick">Выход</Button>
+            
         </Grid>
 
 

@@ -94,17 +94,26 @@
     <Compile Include="Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\AddAutorPagas.xaml.cs">
+      <DependentUpon>AddAutorPagas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pages\avtoriz.xaml.cs">
       <DependentUpon>avtoriz.xaml</DependentUpon>
     </Compile>
     <Compile Include="pages\mainMenuPagas.xaml.cs">
       <DependentUpon>mainMenuPagas.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\publicPagas.xaml.cs">
+      <DependentUpon>publicPagas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pages\REGISTR.xaml.cs">
       <DependentUpon>REGISTR.xaml</DependentUpon>
     </Compile>
     <Compile Include="pages\rememPassPagas.xaml.cs">
       <DependentUpon>rememPassPagas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\userPagas.xaml.cs">
+      <DependentUpon>userPagas.xaml</DependentUpon>
     </Compile>
     <Compile Include="Publication.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -140,6 +149,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="pages\AddAutorPagas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="pages\avtoriz.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -148,11 +161,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="pages\publicPagas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="pages\REGISTR.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pages\rememPassPagas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\userPagas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

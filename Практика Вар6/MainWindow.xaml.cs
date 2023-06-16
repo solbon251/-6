@@ -26,7 +26,7 @@ namespace Практика_Вар6
         {
             InitializeComponent();
             context = new PraktikV6Entities();
-            myFrame.Navigate(new pages.avtoriz(context));
+            myFrame.Navigate(new pages.avtoriz(context, this));
         }
         public void DownloadPictures()
         {
