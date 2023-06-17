@@ -25,20 +25,21 @@ namespace Практика_Вар6.pages
         {
             InitializeComponent();
             context = _cont;
-            countUsse.Text = $"{context.Author.Count()} Пользователей";
-            sumAut.Text = $"Общее количество произведений : {context.Publication.Count()}";
+            countUsse.Text = "Введите данные для поиска";
+            PoiskText.Text = Name;
+            sumAut.Text = "Введите категорию для фильтрации";
             UsserData.ItemsSource = context.Author.ToList();
         }
 
         private void RemoveClick(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Вы уточно хотите удалить Пользователся?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes) 
+            if (result == MessageBoxResult.Yes)
             {
-                try 
+                try
                 {
-                    userr ing = (sender as Hyperlink).DataContext as userr;
-                    //context.Author.Remove(string);
+                    Author Aut = (sender as Hyperlink).DataContext as Author;
+                    context.Author.Remove(Aut);
                     context.SaveChanges();
                     UsserData.ItemsSource = context.Author.ToList();
                 }
@@ -51,13 +52,14 @@ namespace Практика_Вар6.pages
 
         private void AddAuthorClick(object sender, RoutedEventArgs e)
         {
-           // NavigationService.Navigate(new AddAutorPagas(context));
+            NavigationService.Navigate(new AddAutorPagas(context));
         }
 
         private void UpdateClick(object sender, RoutedEventArgs e)
         {
-            Author strin = (sender as Hyperlink).DataContext as Author;
-            NavigationService.Navigate(new AddAutorPagas(context, window));
+            Author Aut = (sender as Hyperlink).DataContext as Author;
+            NavigationService.Navigate(new AddAutorPagas(context));
         }
+
     }
 }

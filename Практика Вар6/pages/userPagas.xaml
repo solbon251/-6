@@ -28,22 +28,25 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
             
         </Grid.RowDefinitions>
-        
+
+        <TextBox Grid.Row="3" Width="350" Name="PoiskText"/>
         <TextBlock Grid.ColumnSpan="2" FontSize="30">Список пользователей</TextBlock>
         <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Fill="#278b27" Height="15" VerticalAlignment="Top" Margin="5"/>
         <TextBlock x:Name="countUsse" Grid.Row="2"/>
         <TextBlock x:Name="sumAut" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" HorizontalAlignment="Right"/>
 
-        <DataGrid Name="UsserData" AutoGenerateColumns="False" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="5">
+        <DataGrid Name="UsserData" AutoGenerateColumns="False" Grid.Row="4" Grid.ColumnSpan="2" Grid.RowSpan="5">
 
             <DataGrid.Columns>
 
-                <DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding FIO}" FontSize="18"/>
-                <DataGridTextColumn Header="Номер телефона" Width="*" Binding="{Binding Tel}" FontSize="18"/>
-                <DataGridTextColumn Header="Адрес" Width="*" Binding="{Binding Type}" FontSize="18"/>
-                <DataGridTemplateColumn Header="Должность" Width="*">
+                <DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding Name}" FontSize="18"/>
+                <DataGridTextColumn Header="Адрес" Width="*" Binding="{Binding adres}" FontSize="18"/>
+                <DataGridTextColumn Header="Номер телефона" Width="180" Binding="{Binding Phone}" FontSize="18"/>
+                <DataGridTextColumn Header="Comment" Width="*" Binding="{Binding Comment}" FontSize="18"/>
+                <DataGridTemplateColumn Header="Действия" Width="*">
 
                     <DataGridTemplateColumn.CellTemplate>
 
@@ -65,7 +68,7 @@
             </DataGrid.Columns>
 
         </DataGrid>
-        <Button Content="+" Grid.Column="2" Grid.Row="8" Width="70" FontSize="50" HorizontalAlignment="Right" Click="AddAuthorClick">
+        <Button Content="+" Grid.Column="2" Grid.Row="9" Width="70" FontSize="50" HorizontalAlignment="Right" Click="AddAuthorClick">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="50"/>

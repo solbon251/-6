@@ -21,13 +21,47 @@ namespace Практика_Вар6.pages
     public partial class AddAutorPagas : Page
     {
         PraktikV6Entities context;
-        Author autor;
+        Author author;
         public AddAutorPagas(PraktikV6Entities c)
         {
             InitializeComponent();
             context = c;
         }
 
+
+
+        public AddAutorPagas(PraktikV6Entities c, Author aut)
+        {
+            InitializeComponent();
+            context = c;
+            author = aut;
+            buttonAU.Content = "Редактировать";
+            // привязываем к кнопке другой обработчик нажатия
+            buttonAU.Click += AddAutor;
+            // заполняем поля на форме
+            NameBox.Text = author.Name;
+            TelBox.Text = author.Phone.ToString();
+            CommBox.Text = author.Comment.ToString();
+            DollBox.Text = author.adres.ToString();
+        }
+
+        private void UpdateClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                author.Name = NameBox.Text;
+                author.Phone = TelBox.Text;
+                author.Comment = CommBox.Text;
+                author.adres = DollBox.Text;
+                context.SaveChanges();
+                NavigationService.Navigate(new userr(context));
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка!");
+            }
+
+        }
         private void CanselCkick(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
@@ -37,7 +71,7 @@ namespace Практика_Вар6.pages
         {
             try
             {
-                Author ing = new Author()
+                Author Aut = new Author()
                 {
                     idAuthor = context.Author.ToList().Last().idAuthor + 1,
                     Name = NameBox.Text,
@@ -45,7 +79,7 @@ namespace Практика_Вар6.pages
                     Comment = CommBox.Text,
                     adres = DollBox.Text,
                 };
-                context.Author.Add(ing);
+                context.Author.Add(Aut);
                 context.SaveChanges();
                 NavigationService.Navigate(new userr(context));
             }

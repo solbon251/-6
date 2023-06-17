@@ -56,6 +56,7 @@ namespace Практика_Вар6.pages
                 else
                 {
                     MessageBox.Show("Вы ввели неверный пароль");
+                    PasswordBox.Background = Brushes.Red;
                     if (countClick >= 3)
                     {
                         Remem.Visibility = Visibility.Visible;
