@@ -28,20 +28,16 @@ namespace Практика_Вар6.pages
             context = c;
         }
 
-
-
-        public AddAutorPagas(PraktikV6Entities c, Author aut)
+        public AddAutorPagas(PraktikV6Entities c, Author Aut)
         {
             InitializeComponent();
             context = c;
-            author = aut;
+            author = Aut;
             buttonAU.Content = "Редактировать";
-            // привязываем к кнопке другой обработчик нажатия
-            buttonAU.Click += AddAutor;
-            // заполняем поля на форме
+            buttonAU.Click += UpdateClick;
             NameBox.Text = author.Name;
             TelBox.Text = author.Phone.ToString();
-            CommBox.Text = author.Comment.ToString();
+            CommBox.Text = author.Comment;
             DollBox.Text = author.adres.ToString();
         }
 

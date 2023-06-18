@@ -25,9 +25,8 @@ namespace Практика_Вар6.pages
         {
             InitializeComponent();
             context = _cont;
-            countUsse.Text = "Введите данные для поиска";
-            PoiskText.Text = Name;
-            sumAut.Text = "Введите категорию для фильтрации";
+            countUsse.Text = $"{context.Author.Count()} Авторов";
+            sumAut.Text = "-";
             UsserData.ItemsSource = context.Author.ToList();
         }
 
@@ -61,5 +60,9 @@ namespace Практика_Вар6.pages
             NavigationService.Navigate(new AddAutorPagas(context));
         }
 
+        private void EditClick(object sender, RoutedEventArgs e)
+        {
+            Author Aut = UsserData.SelectedItem as Author;
+        }
     }
 }

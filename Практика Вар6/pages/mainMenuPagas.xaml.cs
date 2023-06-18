@@ -36,7 +36,7 @@ namespace Практика_Вар6.pages
 
         private void publicClick(object sender, RoutedEventArgs e)
         {
-        //    frameToBasePages.Navigate(new Pagas(_context));
+            frameToBasePages.Navigate(new publicPagas(_context));
         }
 
         private void EscapeClick(object sender, RoutedEventArgs e)

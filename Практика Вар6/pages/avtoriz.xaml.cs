@@ -50,6 +50,7 @@ namespace Практика_Вар6.pages
             {
                 if (user.password.Equals(pass))
                 {
+                    PasswordBox.Background = Brushes.Green;
                     countClick = 0;
                     NavigationService.Navigate(new mainMenuPagas(context, window));
                 }

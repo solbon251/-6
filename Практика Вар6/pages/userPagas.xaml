@@ -28,17 +28,22 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
             
         </Grid.RowDefinitions>
 
-        <TextBox Grid.Row="3" Width="350" Name="PoiskText"/>
         <TextBlock Grid.ColumnSpan="2" FontSize="30">Список пользователей</TextBlock>
         <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Fill="#278b27" Height="15" VerticalAlignment="Top" Margin="5"/>
         <TextBlock x:Name="countUsse" Grid.Row="2"/>
         <TextBlock x:Name="sumAut" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" HorizontalAlignment="Right"/>
 
-        <DataGrid Name="UsserData" AutoGenerateColumns="False" Grid.Row="4" Grid.ColumnSpan="2" Grid.RowSpan="5">
+        <DataGrid Name="UsserData" AutoGenerateColumns="False" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="5">
+
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Click="EditClick">Редактировать</MenuItem>
+                    <MenuItem>Удалить</MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
 
             <DataGrid.Columns>
 
@@ -68,7 +73,7 @@
             </DataGrid.Columns>
 
         </DataGrid>
-        <Button Content="+" Grid.Column="2" Grid.Row="9" Width="70" FontSize="50" HorizontalAlignment="Right" Click="AddAuthorClick">
+        <Button Content="+" Grid.Column="2" Grid.Row="8" Width="70" FontSize="50" HorizontalAlignment="Right" Click="AddAuthorClick">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="50"/>

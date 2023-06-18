@@ -9,6 +9,58 @@
       Title="publicPagas">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.ColumnSpan="2" FontSize="30">Пуликации</TextBlock>
+        <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Fill="#278b27" Height="15" VerticalAlignment="Top" Margin="5"/>
+        <TextBlock Grid.Row="2">Категория</TextBlock>
+        <ComboBox Grid.Row="3" Name="categoryBox" Width="170" Height="30" HorizontalAlignment="Left" DisplayMemberPath="Name" SelectionChanged="ChaneCategory"/>
+        <TextBlock Grid.Row="2" Grid.Column="1">Поиск</TextBlock>
+        <TextBox Grid.Row="3" Grid.Column="1" Name="searchBox" TextChanged="SearchChange" />
+
+        <ListView Name="listDishes" Grid.Row="4" Grid.RowSpan="6" Grid.ColumnSpan="2" d:ItemsSource="{d:SampleData ItemCount=5}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="200" Height="200">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Image Source="{Binding Photo}" Grid.RowSpan="2" Stretch="Fill"/>
+                        <Grid Grid.Row="1" Background="Gray" Opacity="0.7">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock TextWrapping="Wrap" FontSize="14" Foreground="White"  Text="{Binding Name}"/>
+                            <TextBlock Foreground="White" Grid.Row="1" Text="{Binding Edition}"/>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+
+        </ListView>
+
+
     </Grid>
 </Page>
